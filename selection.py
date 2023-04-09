@@ -20,7 +20,7 @@ def rouletteSelection(populationRanked, eliteSize):
 
     for i in range(0, eliteSize):
         selectionResults.append(populationRanked[i][0])
-    for i in range(eliteSize, len(populationRanked)):
+    for i in range(0, len(populationRanked) - eliteSize):
         pick = 100*random.random()
         for i in range(0, len(populationRanked)):
             if pick <= df.iat[i,3]:
