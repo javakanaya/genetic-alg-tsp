@@ -15,6 +15,6 @@ class Node:
     
     def __repr__(self):
         # return "(" + str(self.x) + "," + str(self.y) + ")"
-        return "(" + str(self.id) + ")"
+        return str(self.id)
     
     
