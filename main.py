@@ -19,17 +19,22 @@ def initPopulation(size, clist):
 
 def nextGeneration(currentGen, eliteSize, mutationRate):
     ranked = selection.rankPop(currentGen)
-    print("distance: ", ranked[0][1], currentGen[ranked[0][0]])
-    print("distance: ", ranked[1][1], currentGen[ranked[2][0]])
-    print("distance: ", ranked[3][1], currentGen[ranked[3][0]])
+    #print(ranked)
+    print("distance: ", ranked[0][1])
+    # print("distance: ", ranked[1][1], currentGen[ranked[2][0]])
+    # print("distance: ", ranked[3][1], currentGen[ranked[3][0]])
     selectionResults = selection.rouletteSelection(ranked, eliteSize)
     pool = reproduction.matingPool(currentGen, selectionResults)
+    # for p in pool:
+    #     print(p)
     children = reproduction.breedPopulation(pool, eliteSize)
+    # for c in children:
+    #     print(c)
     nextGeneration = reproduction.mutatePopulation(children, mutationRate)
     return nextGeneration
 
 populationSize = 100
-generations = 100
+generations = 10000
 eliteSize = 5
 mutationRate = 0.01
 
@@ -43,7 +48,7 @@ for i in range(0, generations):
     print(f"=== Gen :{i} ===")
     population = nextGeneration(population, eliteSize, mutationRate)
 
-print("Final distance: " + str(selection.rankRoutes(population)[0][1]))
+print("Final distance: " + str(selection.rankPop(population)[0][1]))
 
 
 
