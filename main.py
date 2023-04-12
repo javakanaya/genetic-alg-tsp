@@ -21,9 +21,6 @@ def nextGeneration(currentGen, eliteSize, mutationRate):
     ranked = selection.rankPop(currentGen)
     #print(ranked)
     print("distance: ", ranked[0][1])
-
-    # print("distance: ", ranked[1][1], currentGen[ranked[2][0]])
-    # print("distance: ", ranked[3][1], currentGen[ranked[3][0]])
     selectionResults = selection.rouletteSelection(ranked, eliteSize)
     pool = reproduction.matingPool(currentGen, selectionResults)
     # for p in pool:
@@ -31,13 +28,13 @@ def nextGeneration(currentGen, eliteSize, mutationRate):
     children = reproduction.breedPopulation(pool, eliteSize)
     # for c in children:
     #     print(c)
-    nextGeneration = reproduction.mutatePopulation(children, mutationRate)
+    nextGeneration = reproduction.mutatePopulation(children, mutationRate, eliteSize)
     return nextGeneration
 
 populationSize = 100
-generations = 1000
-eliteSize = 20
-mutationRate = 0.01
+generations = 500
+eliteSize = 1
+mutationRate = 0.5
 
 cityList = getCityList()
 population = initPopulation(populationSize, cityList)
