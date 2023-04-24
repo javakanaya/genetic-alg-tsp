@@ -31,7 +31,7 @@ def nextGeneration(currentGen, eliteSize, mutationRate):
     nextGeneration = reproduction.mutatePopulation(children, mutationRate, eliteSize)
     return nextGeneration
 
-populationSize = 100
+populationSize = 150
 generations = 500
 eliteSize = 1
 mutationRate = 0.5
